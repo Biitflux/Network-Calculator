@@ -101,44 +101,44 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(109, 6);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.saveAsToolStripMenuItem.Text = "Save as";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(109, 6);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.printToolStripMenuItem.Text = "Print";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -173,9 +173,9 @@
             this.lbl_yourip.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_yourip.Location = new System.Drawing.Point(144, 51);
             this.lbl_yourip.Name = "lbl_yourip";
-            this.lbl_yourip.Size = new System.Drawing.Size(197, 27);
+            this.lbl_yourip.Size = new System.Drawing.Size(208, 27);
             this.lbl_yourip.TabIndex = 2;
-            this.lbl_yourip.Text = "Enter your IP-Adress";
+            this.lbl_yourip.Text = "Enter your IP-Address";
             // 
             // chk_mask
             // 
@@ -335,9 +335,9 @@
             this.lbl_netzid.ForeColor = System.Drawing.Color.Black;
             this.lbl_netzid.Location = new System.Drawing.Point(512, 160);
             this.lbl_netzid.Name = "lbl_netzid";
-            this.lbl_netzid.Size = new System.Drawing.Size(66, 22);
+            this.lbl_netzid.Size = new System.Drawing.Size(56, 22);
             this.lbl_netzid.TabIndex = 15;
-            this.lbl_netzid.Text = "NetzID\'s";
+            this.lbl_netzid.Text = "NetzID";
             // 
             // lbl_hostmax
             // 
@@ -357,9 +357,9 @@
             this.lbl_bc.ForeColor = System.Drawing.Color.Black;
             this.lbl_bc.Location = new System.Drawing.Point(488, 200);
             this.lbl_bc.Name = "lbl_bc";
-            this.lbl_bc.Size = new System.Drawing.Size(90, 22);
+            this.lbl_bc.Size = new System.Drawing.Size(80, 22);
             this.lbl_bc.TabIndex = 17;
-            this.lbl_bc.Text = "Broadcast\'s";
+            this.lbl_bc.Text = "Broadcast";
             // 
             // txt_noip
             // 
