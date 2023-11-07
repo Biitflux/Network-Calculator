@@ -31,16 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txt_ip1 = new System.Windows.Forms.TextBox();
             this.lbl_yourip = new System.Windows.Forms.Label();
             this.chk_mask = new System.Windows.Forms.CheckBox();
@@ -91,7 +90,6 @@
             this.newToolStripMenuItem,
             this.openToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
             this.toolStripMenuItem1,
             this.printToolStripMenuItem,
@@ -100,50 +98,31 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
-            // saveToolStripMenuItem
+            // toolStripMenuItem2
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save as";
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.newToolStripMenuItem.Text = "New";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showHelpToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // showHelpToolStripMenuItem
-            // 
-            this.showHelpToolStripMenuItem.Name = "showHelpToolStripMenuItem";
-            this.showHelpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.showHelpToolStripMenuItem.Text = "Show Help";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -156,10 +135,27 @@
             this.printToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.printToolStripMenuItem.Text = "Print";
             // 
-            // toolStripMenuItem2
+            // exitToolStripMenuItem
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showHelpToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // showHelpToolStripMenuItem
+            // 
+            this.showHelpToolStripMenuItem.Name = "showHelpToolStripMenuItem";
+            this.showHelpToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.showHelpToolStripMenuItem.Text = "Show Help";
+            this.showHelpToolStripMenuItem.Click += new System.EventHandler(this.showHelpToolStripMenuItem_Click);
             // 
             // txt_ip1
             // 
@@ -175,7 +171,7 @@
             // 
             this.lbl_yourip.AutoSize = true;
             this.lbl_yourip.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_yourip.Location = new System.Drawing.Point(122, 59);
+            this.lbl_yourip.Location = new System.Drawing.Point(144, 51);
             this.lbl_yourip.Name = "lbl_yourip";
             this.lbl_yourip.Size = new System.Drawing.Size(197, 27);
             this.lbl_yourip.TabIndex = 2;
@@ -187,7 +183,7 @@
             this.chk_mask.Checked = true;
             this.chk_mask.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_mask.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
-            this.chk_mask.Location = new System.Drawing.Point(85, 172);
+            this.chk_mask.Location = new System.Drawing.Point(100, 172);
             this.chk_mask.Name = "chk_mask";
             this.chk_mask.Size = new System.Drawing.Size(102, 23);
             this.chk_mask.TabIndex = 99;
@@ -219,7 +215,7 @@
             // 
             this.lbl_what.AutoSize = true;
             this.lbl_what.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_what.Location = new System.Drawing.Point(80, 129);
+            this.lbl_what.Location = new System.Drawing.Point(95, 129);
             this.lbl_what.Name = "lbl_what";
             this.lbl_what.Size = new System.Drawing.Size(292, 27);
             this.lbl_what.TabIndex = 6;
@@ -232,7 +228,7 @@
             this.chk_netzid.Checked = true;
             this.chk_netzid.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_netzid.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
-            this.chk_netzid.Location = new System.Drawing.Point(85, 263);
+            this.chk_netzid.Location = new System.Drawing.Point(100, 263);
             this.chk_netzid.Name = "chk_netzid";
             this.chk_netzid.Size = new System.Drawing.Size(67, 23);
             this.chk_netzid.TabIndex = 7;
@@ -246,7 +242,7 @@
             this.chk_hostmin.Checked = true;
             this.chk_hostmin.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_hostmin.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
-            this.chk_hostmin.Location = new System.Drawing.Point(85, 216);
+            this.chk_hostmin.Location = new System.Drawing.Point(100, 216);
             this.chk_hostmin.Name = "chk_hostmin";
             this.chk_hostmin.Size = new System.Drawing.Size(77, 23);
             this.chk_hostmin.TabIndex = 8;
@@ -260,7 +256,7 @@
             this.chk_bc.Checked = true;
             this.chk_bc.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_bc.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
-            this.chk_bc.Location = new System.Drawing.Point(220, 263);
+            this.chk_bc.Location = new System.Drawing.Point(234, 263);
             this.chk_bc.Name = "chk_bc";
             this.chk_bc.Size = new System.Drawing.Size(88, 23);
             this.chk_bc.TabIndex = 9;
@@ -274,7 +270,7 @@
             this.chk_noip.Checked = true;
             this.chk_noip.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_noip.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
-            this.chk_noip.Location = new System.Drawing.Point(220, 172);
+            this.chk_noip.Location = new System.Drawing.Point(242, 172);
             this.chk_noip.Name = "chk_noip";
             this.chk_noip.Size = new System.Drawing.Size(121, 23);
             this.chk_noip.TabIndex = 10;
@@ -288,7 +284,7 @@
             this.chk_hostmax.Checked = true;
             this.chk_hostmax.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_hostmax.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
-            this.chk_hostmax.Location = new System.Drawing.Point(220, 216);
+            this.chk_hostmax.Location = new System.Drawing.Point(242, 216);
             this.chk_hostmax.Name = "chk_hostmax";
             this.chk_hostmax.Size = new System.Drawing.Size(80, 23);
             this.chk_hostmax.TabIndex = 11;
@@ -302,7 +298,7 @@
             this.btn_calc.FlatAppearance.BorderSize = 0;
             this.btn_calc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_calc.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_calc.Location = new System.Drawing.Point(154, 314);
+            this.btn_calc.Location = new System.Drawing.Point(160, 310);
             this.btn_calc.Name = "btn_calc";
             this.btn_calc.Size = new System.Drawing.Size(109, 32);
             this.btn_calc.TabIndex = 12;
@@ -566,6 +562,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Network Calculator";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -579,7 +576,6 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
