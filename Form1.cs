@@ -5,230 +5,223 @@ using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace NetzwerkRechner
 {
     public partial class Form1 : Form
     {
+        // This is the constructor for the Form1 class
         public Form1()
         {
+            // This method call is required for Windows Forms designer support
             InitializeComponent();
         }
+
+        // This is a simple class that represents an object with a label and a value
         public class MyObject
         {
+            // This is the property for the label of the object
             public string Label { get; set; }
+
+            // This is the property for the value of the object
             public string Value { get; set; }
         }
 
+
+        // This event is triggered when the state of chk_mask checkbox changes
         private void chk_mask_CheckedChanged(object sender, EventArgs e)
         {
-            if (chk_mask.Checked)
-            {
-                txt_mask.Visible = true;
-                lbl_mask.Visible = true;
-            }
-            else
-            {
-                txt_mask.Visible = false;
-                lbl_mask.Visible = false;
-            }
-
-
-
-
+            // Set the visibility of txt_mask and lbl_mask to the state of the checkbox
+            txt_mask.Visible = chk_mask.Checked;
+            lbl_mask.Visible = chk_mask.Checked;
         }
 
-        private void lbl_what_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        // This event is triggered when the state of chk_noip checkbox changes
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            if (chk_noip.Checked)
-            {
-                txt_noip.Visible = true;
-                lbl_noip.Visible = true;
-            }
-            else
-            {
-                txt_noip.Visible = false;
-                lbl_noip.Visible = false;
-            }
+            // Set the visibility of txt_noip and lbl_noip to the state of the checkbox
+            txt_noip.Visible = chk_noip.Checked;
+            lbl_noip.Visible = chk_noip.Checked;
         }
 
+        // This event is triggered when the state of chk_hostmin checkbox changes
         private void chk_substeps_CheckedChanged(object sender, EventArgs e)
         {
-            if (chk_hostmin.Checked)
-            {
-                txt_hostmin.Visible = true;
-                lbl_hostmin.Visible = true;
-            }
-            else
-            {
-                txt_hostmin.Visible = false;
-                lbl_hostmin.Visible = false;
-            }
+            // Set the visibility of txt_hostmin and lbl_hostmin to the state of the checkbox
+            txt_hostmin.Visible = chk_hostmin.Checked;
+            lbl_hostmin.Visible = chk_hostmin.Checked;
         }
 
+        // This event is triggered when the state of chk_hostmax checkbox changes
         private void chk_asub_CheckedChanged(object sender, EventArgs e)
         {
-            if (chk_hostmax.Checked)
-            {
-                txt_hostmax.Visible = true;
-                lbl_hostmax.Visible = true;
-            }
-            else
-            {
-                txt_hostmax.Visible = false;
-                lbl_hostmax.Visible = false;
-            }
+            // Set the visibility of txt_hostmax and lbl_hostmax to the state of the checkbox
+            txt_hostmax.Visible = chk_hostmax.Checked;
+            lbl_hostmax.Visible = chk_hostmax.Checked;
         }
 
+        // This event is triggered when the state of chk_netzid checkbox changes
         private void chk_netzid_CheckedChanged(object sender, EventArgs e)
         {
-            if (chk_netzid.Checked)
-            {
-                txt_netzid.Visible = true;
-                lbl_netzid.Visible = true;
-            }
-            else
-            {
-                txt_netzid.Visible = false;
-                lbl_netzid.Visible = false;
-            }
+            // Set the visibility of txt_netzid and lbl_netzid to the state of the checkbox
+            txt_netzid.Visible = chk_netzid.Checked;
+            lbl_netzid.Visible = chk_netzid.Checked;
         }
 
+        // This event is triggered when the state of chk_bc checkbox changes
         private void chk_bc_CheckedChanged(object sender, EventArgs e)
         {
-            if (chk_bc.Checked)
-            {
-                txt_bc.Visible = true;
-                lbl_bc.Visible = true;
-            }
-            else
-            {
-                txt_bc.Visible = false;
-                lbl_bc.Visible = false;
-            }
+            // Set the visibility of txt_bc and lbl_bc to the state of the checkbox
+            txt_bc.Visible = chk_bc.Checked;
+            lbl_bc.Visible = chk_bc.Checked;
         }
 
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {   
+        {
+            // Close the current form
             this.Close();
         }
 
+
         private void btn_calc_Click(object sender, EventArgs e)
         {
-            //Error telling
-
-            string ip1 = txt_ip1.Text;
-            string ip2 = txt_ip2.Text;
-            string ip3 = txt_ip3.Text;
-            string ip4 = txt_ip4.Text;
-
-
-            if (String.IsNullOrEmpty(ip1) || String.IsNullOrEmpty(ip2) || String.IsNullOrEmpty(ip3) || String.IsNullOrEmpty(ip4))
+            // Check if any part of the IP address is empty
+            string[] ipParts = { txt_ip1.Text, txt_ip2.Text, txt_ip3.Text, txt_ip4.Text };
+            if (ipParts.Any(string.IsNullOrEmpty))
             {
-                string message = "Your entered IP address is invalid, \nplease correct your entry.";
-                string title = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                MessageBox.Show("Your entered IP address is invalid, \nplease correct your entry.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-            // Checking Checked Menu
-            else if (!chk_mask.Checked && !chk_noip.Checked && !chk_hostmin.Checked && !chk_hostmax.Checked && !chk_netzid.Checked && !chk_bc.Checked)
+            // Check if none of the checkboxes are checked
+            else if (new[] { chk_mask, chk_noip, chk_hostmin, chk_hostmax, chk_netzid, chk_bc }.All(chk => !chk.Checked))
             {
-                string message = "At least one must be selected";
-                string title = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
-
+                MessageBox.Show("At least one must be selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //Checking is Mask Box empty
-
+            // Check if the mask box is empty
             else if (string.IsNullOrEmpty(cobo_mask.Text))
             {
-                string message = "At least one mask must be selected";
-                string title = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
-            }
-
-            //Calc Mask
-            int subnetBits = int.Parse(cobo_mask.SelectedIndex.ToString());
-            if (subnetBits >= 0 && subnetBits <= 31)
-            {
-                uint decimalMask = (uint.MaxValue << (31 - subnetBits)) & uint.MaxValue;
-                byte[] bytes = BitConverter.GetBytes(decimalMask);
-                if (BitConverter.IsLittleEndian)
-                {
-                    Array.Reverse(bytes);
-                }
-                IPAddress subnetMaskCalc = new IPAddress(bytes);
-                txt_mask.Text = subnetMaskCalc.ToString();
+                MessageBox.Show("At least one mask must be selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                txt_mask.Text = "Ungültige Eingabe";
+                // Calculate the subnet mask
+                int subnetBits = cobo_mask.SelectedIndex;
+                if (subnetBits >= 0 && subnetBits <= 31)
+                {
+                    uint decimalMask = (uint.MaxValue << (31 - subnetBits)) & uint.MaxValue;
+                    byte[] bytes = BitConverter.GetBytes(decimalMask);
+                    if (BitConverter.IsLittleEndian)
+                    {
+                        Array.Reverse(bytes);
+                    }
+                    IPAddress subnetMaskCalc = new IPAddress(bytes);
+                    txt_mask.Text = subnetMaskCalc.ToString();
+                }
+                else
+                {
+                    txt_mask.Text = "Invalid Input";
+                }
             }
 
-            //Split Subnetmask
 
+            // Split the subnet mask into octets
             string subnetMask = txt_mask.Text;
             string[] octets = subnetMask.Split('.');
+
+            // Initialize arrays to hold the octet values and their binary representations
             int[] octetValues = new int[4];
             string[] binaryOctets = new string[4];
 
             for (int i = 0; i < 4; i++)
             {
-                octetValues[i] = int.Parse(octets[i]);
-                binaryOctets[i] = Convert.ToString(octetValues[i], 2).PadLeft(8, '0');
+                // Check if the array 'octets' and its element 'octets[i]' are not NULL
+                if (octets != null && i < octets.Length && octets[i] != null)
+                {
+                    // Try to parse the octet value
+                    if (int.TryParse(octets[i], out int result))
+                    {
+                        // If successful, store the octet value and its binary representation
+                        octetValues[i] = result;
+                        binaryOctets[i] = Convert.ToString(octetValues[i], 2).PadLeft(8, '0');
+                    }
+                }
             }
 
-
-            //Calc how many 0
-            string[] binaryOctetsCalc = new string[4];
-
+            // Initialize totalZeroes
             int totalZeroes = 0;
 
-            for (int i = 0; i < 4; i++)
+            // Check if binaryOctets is not null
+            if (binaryOctets != null)
             {
-                int zeroCount = binaryOctets[i].Count(c => c == '0');
-                totalZeroes += zeroCount;
+                // Iterate over each binary octet
+                for (int i = 0; i < binaryOctets.Length; i++)
+                {
+                    // Check if binaryOctets[i] is not null
+                    if (binaryOctets[i] != null)
+                    {
+                        // Count the number of zeroes in the current binary octet
+                        int zeroCount = binaryOctets[i].Count(c => c == '0');
+
+                        // Add the number of zeroes in the current binary octet to the total
+                        totalZeroes += zeroCount;
+                    }
+                }
             }
 
-            //Calc how many IpAdresses
-            double NumberOfIPsResult = Math.Pow(2, totalZeroes) - 2;
+
+            // Calculate the number of IP addresses
+            double numberOfIPs = Math.Pow(2, totalZeroes) - 2;
+
+            // Display the number of IP addresses in the txt_noip text box
+            if (numberOfIPs > 0) 
+            { txt_noip.Text = numberOfIPs.ToString(); }
+            
 
 
-            txt_noip.Text = NumberOfIPsResult.ToString();
+
+            // Initialize the IP address parts
+            string[] ipAddressParts = { txt_ip1.Text, txt_ip2.Text, txt_ip3.Text, txt_ip4.Text };
+
+            // Validate each part
+            for (int i = 0; i < 4; i++)
+            {
+                if (!int.TryParse(ipAddressParts[i], out int part) || part < 0 || part > 255)
+                {
+                    // If the part is not a valid number between 0 and 255, exit the method
+                    return;
+                }
+            }
+
+            // Combine the four parts of the IP address into a single string
+            string ip = string.Join(".", ipAddressParts);
 
 
 
-            //calc Netid + bc + first & last valid ip
-            string ip = ip1 + "." + ip2 + "." + ip3 + "." + ip4;
+            // Parse the IP and subnet mask strings into IPAddress objects
             IPAddress ipAddr = IPAddress.Parse(ip);
             IPAddress subnetMaskAddr = IPAddress.Parse(subnetMask);
 
+            // Get the byte arrays of the IP and subnet mask
             byte[] ipBytes = ipAddr.GetAddressBytes();
             byte[] subnetBytes = subnetMaskAddr.GetAddressBytes();
 
+            // Initialize byte arrays for the broadcast and network addresses
             byte[] broadcastBytes = new byte[ipBytes.Length];
             byte[] networkBytes = new byte[ipBytes.Length];
 
+            // Calculate the broadcast and network addresses
             for (int i = 0; i < broadcastBytes.Length; i++)
             {
                 broadcastBytes[i] = (byte)(ipBytes[i] | (subnetBytes[i] ^ 255));
                 networkBytes[i] = (byte)(ipBytes[i] & subnetBytes[i]);
             }
 
+            // Convert the broadcast and network byte arrays back to IPAddresses
             IPAddress broadcastAddr = new IPAddress(broadcastBytes);
             IPAddress networkAddr = new IPAddress(networkBytes);
 
+            // Calculate the first and last valid IP addresses in the subnet
             byte[] firstValidBytes = networkBytes;
             firstValidBytes[firstValidBytes.Length - 1]++;
             IPAddress firstValidAddr = new IPAddress(firstValidBytes);
@@ -237,106 +230,94 @@ namespace NetzwerkRechner
             lastValidBytes[lastValidBytes.Length - 1]--;
             IPAddress lastValidAddr = new IPAddress(lastValidBytes);
 
+            // Display the calculated addresses in the text boxes
             txt_bc.Text = broadcastAddr.ToString();
             txt_netzid.Text = networkAddr.ToString();
             txt_hostmin.Text = firstValidAddr.ToString();
             txt_hostmax.Text = lastValidAddr.ToString();
 
 
-        }
-
-        private void lb_mask_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
+
 
         private void txt_ip_TextChanged(object sender, EventArgs e)
         {
-            if (!Regex.IsMatch(txt_ip1.Text, @"^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$"))
+            // Cast the sender to a TextBox
+            System.Windows.Forms.TextBox textBox = sender as System.Windows.Forms.TextBox;
+
+            // Check if the cast was successful and the text is not a valid IP segment
+            if (textBox != null && !string.IsNullOrEmpty(textBox.Text) && !Regex.IsMatch(textBox.Text, @"^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$"))
             {
+                // Define the error message
                 string message = "Only Numbers from 0-255\nare allowed!\n\nTry again!";
                 string title = "Error";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
-            }
 
-        }
-
-        private void txt_ip2_TextChanged(object sender, EventArgs e)
-        {
-            if (!Regex.IsMatch(txt_ip2.Text, @"^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$"))
-            {
-                string message = "Only Numbers from 0-255\nare allowed!\n\nTry again!";
-                string title = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                // Show the error message
                 MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
             }
         }
 
-        private void txt_ip3_TextChanged(object sender, EventArgs e)
-        {
-            if (!Regex.IsMatch(txt_ip3.Text, @"^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$"))
-            {
-                string message = "Only Numbers from 0-255\nare allowed!\n\nTry again!";
-                string title = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
-            }
-        }
-
-        private void txt_ip4_TextChanged(object sender, EventArgs e)
-        {
-            if (!Regex.IsMatch(txt_ip4.Text, @"^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$"))
-            {
-                string message = "Only Numbers from 0-255\nare allowed!\n\nTry again!";
-                string title = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
-            }
-        }
-
-        private void cobo_mask_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void showHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Define a message box to provide help information
             string message = "For help, contact me via Discord: bitflux_\nID: (266266567157874700) ";
             string title = "Help";
             MessageBoxButtons buttons = MessageBoxButtons.OK;
-            MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
 
+            // Show the message box
+            MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
         }
+
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Create a new instance of Form1
             var frm = new Form1();
+
+            // Show the new form
             frm.Show();
         }
 
 
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // Check if the user is trying to close the form
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                string message = "Do you want to close this window?";
+                // Define a message box to confirm the closing
+                string message = "Do you want to save?";
                 string title = "Close window";
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
-                if (result == DialogResult.No)
+
+                // If the user clicks 'Yes', cancel the closing event
+                if (result == DialogResult.Yes)
                 {
-                    e.Cancel = true;
+                    Boolean SaveResult = SaveData();
+                    if (!SaveResult)
+                    {
+                        e.Cancel = true;
+                    }
                 }
             }
         }
 
 
+
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SaveData();
+        }
+
+        private bool SaveData()
+        {
+            // Create a list of objects to be saved
             List<MyObject> myObjects = new List<MyObject>
             {
-
                 new MyObject { Label = "Subnetzmask", Value = txt_mask.Text },
                 new MyObject { Label = "Number of IP's", Value = txt_noip.Text },
                 new MyObject { Label = "NetzID", Value = txt_netzid.Text },
@@ -345,50 +326,65 @@ namespace NetzwerkRechner
                 new MyObject { Label = "HostMax", Value = txt_hostmax.Text },
                 new MyObject { Label = "Occupied bits", Value = cobo_mask.Text},
                 new MyObject { Label = "IP", Value = txt_ip1.Text + "." + txt_ip2.Text + "." + txt_ip3.Text + "." + txt_ip4.Text },
-            };
+             };
 
+            // Create a new save file dialog
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-
             saveFileDialog.Filter = "TXT files (*.txt)|*.txt";
+
+            // Show the save file dialog and check if user clicked OK
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
+                // Store the name of the selected file
                 string selectedFileName = saveFileDialog.FileName;
                 saveFileDialog.RestoreDirectory = true;
 
+                // Create a new StreamWriter to write to the file
                 using (StreamWriter writer = new StreamWriter(selectedFileName))
                 {
+                    // Write each object to the file
                     foreach (var item in myObjects)
                     {
                         writer.WriteLine($"{item.Label}: {item.Value}");
                     }
+
+                    // Show a message box indicating the file was saved
                     string message = "Your file was saved.";
                     string title = "Saved";
                     MessageBoxButtons buttons = MessageBoxButtons.OK;
                     MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
-
                 }
-                
+                return true;
             }
+            return false;
         }
-
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Create a new file dialog
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = "c:\\";
             openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog.FilterIndex = 2;
             openFileDialog.RestoreDirectory = true;
 
+            // Show the file dialog and check if user clicked OK
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                // Store the path of the selected file
                 string filePath = openFileDialog.FileName;
+
+                // Open the selected file
                 var fileStream = openFileDialog.OpenFile();
 
+                // Create a new StreamReader to read the file
                 using (StreamReader reader = new StreamReader(fileStream))
                 {
                     string line;
+
+                    // Read the file line by line
                     while ((line = reader.ReadLine()) != null)
                     {
+                        // Check if the line starts with a specific string and update the corresponding textbox
                         if (line.StartsWith("Subnetzmask:"))
                         {
                             txt_mask.Text = line.Substring("Subnetzmask:".Length).Trim();
@@ -435,7 +431,6 @@ namespace NetzwerkRechner
             }
         }
     }
-
 }
 
 

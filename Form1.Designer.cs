@@ -220,7 +220,6 @@
             this.lbl_what.Size = new System.Drawing.Size(292, 27);
             this.lbl_what.TabIndex = 6;
             this.lbl_what.Text = "What do you want to calculate?";
-            this.lbl_what.Click += new System.EventHandler(this.lbl_what_Click);
             // 
             // chk_netzid
             // 
@@ -256,7 +255,7 @@
             this.chk_bc.Checked = true;
             this.chk_bc.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_bc.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
-            this.chk_bc.Location = new System.Drawing.Point(234, 263);
+            this.chk_bc.Location = new System.Drawing.Point(242, 263);
             this.chk_bc.Name = "chk_bc";
             this.chk_bc.Size = new System.Drawing.Size(88, 23);
             this.chk_bc.TabIndex = 9;
@@ -415,7 +414,7 @@
             this.txt_ip4.Name = "txt_ip4";
             this.txt_ip4.Size = new System.Drawing.Size(36, 20);
             this.txt_ip4.TabIndex = 4;
-            this.txt_ip4.TextChanged += new System.EventHandler(this.txt_ip4_TextChanged);
+            this.txt_ip4.TextChanged += new System.EventHandler(this.txt_ip_TextChanged);
             // 
             // txt_ip2
             // 
@@ -425,7 +424,7 @@
             this.txt_ip2.Name = "txt_ip2";
             this.txt_ip2.Size = new System.Drawing.Size(36, 20);
             this.txt_ip2.TabIndex = 2;
-            this.txt_ip2.TextChanged += new System.EventHandler(this.txt_ip2_TextChanged);
+            this.txt_ip2.TextChanged += new System.EventHandler(this.txt_ip_TextChanged);
             // 
             // txt_ip3
             // 
@@ -435,7 +434,7 @@
             this.txt_ip3.Name = "txt_ip3";
             this.txt_ip3.Size = new System.Drawing.Size(36, 20);
             this.txt_ip3.TabIndex = 3;
-            this.txt_ip3.TextChanged += new System.EventHandler(this.txt_ip3_TextChanged);
+            this.txt_ip3.TextChanged += new System.EventHandler(this.txt_ip_TextChanged);
             // 
             // lbl_point
             // 
@@ -518,7 +517,6 @@
             this.cobo_mask.Name = "cobo_mask";
             this.cobo_mask.Size = new System.Drawing.Size(64, 21);
             this.cobo_mask.TabIndex = 5;
-            this.cobo_mask.SelectedIndexChanged += new System.EventHandler(this.cobo_mask_SelectedIndexChanged);
             // 
             // Form1
             // 
