@@ -36,7 +36,6 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,6 +69,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cobo_mask = new System.Windows.Forms.ComboBox();
+            this.lbl_bin_ip = new System.Windows.Forms.Label();
+            this.lbl_bin_mask = new System.Windows.Forms.Label();
+            this.txt_bin_ip = new System.Windows.Forms.TextBox();
+            this.txt_bin_mask = new System.Windows.Forms.TextBox();
+            this.lbl_bin_netzid = new System.Windows.Forms.Label();
+            this.txt_bin_netzid = new System.Windows.Forms.TextBox();
+            this.btn_clear = new System.Windows.Forms.Button();
+            this.btn_save = new System.Windows.Forms.Button();
+            this.chk_bin_ip = new System.Windows.Forms.CheckBox();
+            this.chk_bin_mask = new System.Windows.Forms.CheckBox();
+            this.chk_bin_netzid = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,7 +102,6 @@
             this.toolStripMenuItem2,
             this.saveAsToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.printToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -101,44 +110,38 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(109, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save as";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(109, 6);
-            // 
-            // printToolStripMenuItem
-            // 
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.printToolStripMenuItem.Text = "Print";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -183,7 +186,7 @@
             this.chk_mask.Checked = true;
             this.chk_mask.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_mask.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
-            this.chk_mask.Location = new System.Drawing.Point(100, 172);
+            this.chk_mask.Location = new System.Drawing.Point(34, 172);
             this.chk_mask.Name = "chk_mask";
             this.chk_mask.Size = new System.Drawing.Size(102, 23);
             this.chk_mask.TabIndex = 99;
@@ -227,7 +230,7 @@
             this.chk_netzid.Checked = true;
             this.chk_netzid.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_netzid.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
-            this.chk_netzid.Location = new System.Drawing.Point(100, 263);
+            this.chk_netzid.Location = new System.Drawing.Point(34, 263);
             this.chk_netzid.Name = "chk_netzid";
             this.chk_netzid.Size = new System.Drawing.Size(67, 23);
             this.chk_netzid.TabIndex = 7;
@@ -241,7 +244,7 @@
             this.chk_hostmin.Checked = true;
             this.chk_hostmin.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_hostmin.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
-            this.chk_hostmin.Location = new System.Drawing.Point(100, 216);
+            this.chk_hostmin.Location = new System.Drawing.Point(34, 216);
             this.chk_hostmin.Name = "chk_hostmin";
             this.chk_hostmin.Size = new System.Drawing.Size(77, 23);
             this.chk_hostmin.TabIndex = 8;
@@ -255,7 +258,7 @@
             this.chk_bc.Checked = true;
             this.chk_bc.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_bc.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
-            this.chk_bc.Location = new System.Drawing.Point(242, 263);
+            this.chk_bc.Location = new System.Drawing.Point(168, 263);
             this.chk_bc.Name = "chk_bc";
             this.chk_bc.Size = new System.Drawing.Size(88, 23);
             this.chk_bc.TabIndex = 9;
@@ -269,11 +272,11 @@
             this.chk_noip.Checked = true;
             this.chk_noip.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_noip.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
-            this.chk_noip.Location = new System.Drawing.Point(242, 172);
+            this.chk_noip.Location = new System.Drawing.Point(168, 172);
             this.chk_noip.Name = "chk_noip";
-            this.chk_noip.Size = new System.Drawing.Size(121, 23);
+            this.chk_noip.Size = new System.Drawing.Size(61, 23);
             this.chk_noip.TabIndex = 10;
-            this.chk_noip.Text = "Number of IP\'s";
+            this.chk_noip.Text = "Hosts";
             this.chk_noip.UseVisualStyleBackColor = true;
             this.chk_noip.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
@@ -283,7 +286,7 @@
             this.chk_hostmax.Checked = true;
             this.chk_hostmax.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_hostmax.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
-            this.chk_hostmax.Location = new System.Drawing.Point(242, 216);
+            this.chk_hostmax.Location = new System.Drawing.Point(168, 216);
             this.chk_hostmax.Name = "chk_hostmax";
             this.chk_hostmax.Size = new System.Drawing.Size(80, 23);
             this.chk_hostmax.TabIndex = 11;
@@ -297,9 +300,9 @@
             this.btn_calc.FlatAppearance.BorderSize = 0;
             this.btn_calc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_calc.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_calc.Location = new System.Drawing.Point(160, 310);
+            this.btn_calc.Location = new System.Drawing.Point(49, 330);
             this.btn_calc.Name = "btn_calc";
-            this.btn_calc.Size = new System.Drawing.Size(109, 32);
+            this.btn_calc.Size = new System.Drawing.Size(109, 35);
             this.btn_calc.TabIndex = 12;
             this.btn_calc.Text = "Calculate";
             this.btn_calc.UseVisualStyleBackColor = false;
@@ -310,11 +313,11 @@
             this.lbl_noip.AutoSize = true;
             this.lbl_noip.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 12F);
             this.lbl_noip.ForeColor = System.Drawing.Color.Black;
-            this.lbl_noip.Location = new System.Drawing.Point(464, 120);
+            this.lbl_noip.Location = new System.Drawing.Point(519, 120);
             this.lbl_noip.Name = "lbl_noip";
-            this.lbl_noip.Size = new System.Drawing.Size(114, 22);
+            this.lbl_noip.Size = new System.Drawing.Size(49, 22);
             this.lbl_noip.TabIndex = 13;
-            this.lbl_noip.Text = "Number of IP\'s";
+            this.lbl_noip.Text = "Hosts";
             // 
             // lbl_hostmin
             // 
@@ -518,12 +521,153 @@
             this.cobo_mask.Size = new System.Drawing.Size(64, 21);
             this.cobo_mask.TabIndex = 5;
             // 
+            // lbl_bin_ip
+            // 
+            this.lbl_bin_ip.AutoSize = true;
+            this.lbl_bin_ip.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 12F);
+            this.lbl_bin_ip.ForeColor = System.Drawing.Color.Black;
+            this.lbl_bin_ip.Location = new System.Drawing.Point(248, 356);
+            this.lbl_bin_ip.Name = "lbl_bin_ip";
+            this.lbl_bin_ip.Size = new System.Drawing.Size(139, 22);
+            this.lbl_bin_ip.TabIndex = 100;
+            this.lbl_bin_ip.Text = "IP Address Binary";
+            // 
+            // lbl_bin_mask
+            // 
+            this.lbl_bin_mask.AutoSize = true;
+            this.lbl_bin_mask.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 12F);
+            this.lbl_bin_mask.ForeColor = System.Drawing.Color.Black;
+            this.lbl_bin_mask.Location = new System.Drawing.Point(264, 390);
+            this.lbl_bin_mask.Name = "lbl_bin_mask";
+            this.lbl_bin_mask.Size = new System.Drawing.Size(123, 22);
+            this.lbl_bin_mask.TabIndex = 101;
+            this.lbl_bin_mask.Text = "Netmask Binary";
+            // 
+            // txt_bin_ip
+            // 
+            this.txt_bin_ip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(172)))), ((int)(((byte)(120)))));
+            this.txt_bin_ip.Location = new System.Drawing.Point(397, 356);
+            this.txt_bin_ip.Name = "txt_bin_ip";
+            this.txt_bin_ip.ReadOnly = true;
+            this.txt_bin_ip.Size = new System.Drawing.Size(367, 20);
+            this.txt_bin_ip.TabIndex = 102;
+            // 
+            // txt_bin_mask
+            // 
+            this.txt_bin_mask.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(172)))), ((int)(((byte)(120)))));
+            this.txt_bin_mask.Location = new System.Drawing.Point(397, 392);
+            this.txt_bin_mask.Name = "txt_bin_mask";
+            this.txt_bin_mask.ReadOnly = true;
+            this.txt_bin_mask.Size = new System.Drawing.Size(367, 20);
+            this.txt_bin_mask.TabIndex = 103;
+            // 
+            // lbl_bin_netzid
+            // 
+            this.lbl_bin_netzid.AutoSize = true;
+            this.lbl_bin_netzid.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 12F);
+            this.lbl_bin_netzid.ForeColor = System.Drawing.Color.Black;
+            this.lbl_bin_netzid.Location = new System.Drawing.Point(276, 425);
+            this.lbl_bin_netzid.Name = "lbl_bin_netzid";
+            this.lbl_bin_netzid.Size = new System.Drawing.Size(107, 22);
+            this.lbl_bin_netzid.TabIndex = 104;
+            this.lbl_bin_netzid.Text = "Netzid Binary";
+            // 
+            // txt_bin_netzid
+            // 
+            this.txt_bin_netzid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(172)))), ((int)(((byte)(120)))));
+            this.txt_bin_netzid.Location = new System.Drawing.Point(397, 427);
+            this.txt_bin_netzid.Name = "txt_bin_netzid";
+            this.txt_bin_netzid.ReadOnly = true;
+            this.txt_bin_netzid.Size = new System.Drawing.Size(367, 20);
+            this.txt_bin_netzid.TabIndex = 105;
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(130)))), ((int)(((byte)(100)))));
+            this.btn_clear.FlatAppearance.BorderSize = 0;
+            this.btn_clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_clear.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_clear.Location = new System.Drawing.Point(49, 375);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(109, 35);
+            this.btn_clear.TabIndex = 106;
+            this.btn_clear.Text = "Reset";
+            this.btn_clear.UseVisualStyleBackColor = false;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
+            // btn_save
+            // 
+            this.btn_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(130)))), ((int)(((byte)(100)))));
+            this.btn_save.FlatAppearance.BorderSize = 0;
+            this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_save.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_save.Location = new System.Drawing.Point(49, 420);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(109, 35);
+            this.btn_save.TabIndex = 107;
+            this.btn_save.Text = "Save";
+            this.btn_save.UseVisualStyleBackColor = false;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            // 
+            // chk_bin_ip
+            // 
+            this.chk_bin_ip.AutoSize = true;
+            this.chk_bin_ip.Checked = true;
+            this.chk_bin_ip.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_bin_ip.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
+            this.chk_bin_ip.Location = new System.Drawing.Point(303, 172);
+            this.chk_bin_ip.Name = "chk_bin_ip";
+            this.chk_bin_ip.Size = new System.Drawing.Size(141, 23);
+            this.chk_bin_ip.TabIndex = 108;
+            this.chk_bin_ip.Text = "IP Address Binary";
+            this.chk_bin_ip.UseVisualStyleBackColor = true;
+            this.chk_bin_ip.CheckedChanged += new System.EventHandler(this.chk_bin_ip_CheckedChanged);
+            // 
+            // chk_bin_mask
+            // 
+            this.chk_bin_mask.AutoSize = true;
+            this.chk_bin_mask.Checked = true;
+            this.chk_bin_mask.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_bin_mask.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
+            this.chk_bin_mask.Location = new System.Drawing.Point(303, 216);
+            this.chk_bin_mask.Name = "chk_bin_mask";
+            this.chk_bin_mask.Size = new System.Drawing.Size(124, 23);
+            this.chk_bin_mask.TabIndex = 109;
+            this.chk_bin_mask.Text = "Netmask Binary";
+            this.chk_bin_mask.UseVisualStyleBackColor = true;
+            this.chk_bin_mask.CheckedChanged += new System.EventHandler(this.chk_bin_mask_CheckedChanged);
+            // 
+            // chk_bin_netzid
+            // 
+            this.chk_bin_netzid.AutoSize = true;
+            this.chk_bin_netzid.Checked = true;
+            this.chk_bin_netzid.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_bin_netzid.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 10F);
+            this.chk_bin_netzid.Location = new System.Drawing.Point(303, 263);
+            this.chk_bin_netzid.Name = "chk_bin_netzid";
+            this.chk_bin_netzid.Size = new System.Drawing.Size(111, 23);
+            this.chk_bin_netzid.TabIndex = 110;
+            this.chk_bin_netzid.Text = "Netzid Binary";
+            this.chk_bin_netzid.UseVisualStyleBackColor = true;
+            this.chk_bin_netzid.CheckedChanged += new System.EventHandler(this.chk_bin_netzid_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(231)))), ((int)(((byte)(210)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 469);
+            this.Controls.Add(this.chk_bin_netzid);
+            this.Controls.Add(this.chk_bin_mask);
+            this.Controls.Add(this.chk_bin_ip);
+            this.Controls.Add(this.btn_save);
+            this.Controls.Add(this.btn_clear);
+            this.Controls.Add(this.txt_bin_netzid);
+            this.Controls.Add(this.lbl_bin_netzid);
+            this.Controls.Add(this.txt_bin_mask);
+            this.Controls.Add(this.txt_bin_ip);
+            this.Controls.Add(this.lbl_bin_mask);
+            this.Controls.Add(this.lbl_bin_ip);
             this.Controls.Add(this.cobo_mask);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -578,7 +722,6 @@
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showHelpToolStripMenuItem;
         private System.Windows.Forms.TextBox txt_ip1;
@@ -611,6 +754,17 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cobo_mask;
+        private System.Windows.Forms.Label lbl_bin_ip;
+        private System.Windows.Forms.Label lbl_bin_mask;
+        private System.Windows.Forms.TextBox txt_bin_ip;
+        private System.Windows.Forms.TextBox txt_bin_mask;
+        private System.Windows.Forms.Label lbl_bin_netzid;
+        private System.Windows.Forms.TextBox txt_bin_netzid;
+        private System.Windows.Forms.Button btn_clear;
+        private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.CheckBox chk_bin_ip;
+        private System.Windows.Forms.CheckBox chk_bin_mask;
+        private System.Windows.Forms.CheckBox chk_bin_netzid;
     }
 }
 

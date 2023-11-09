@@ -77,6 +77,31 @@ namespace NetzwerkRechner
             lbl_bc.Visible = chk_bc.Checked;
         }
 
+        // This event is triggered when the state of chk_bin_ip checkbox 
+        private void chk_bin_ip_CheckedChanged(object sender, EventArgs e)
+        {
+            // Set the visibility of txt_bin_ip and lbl_bin_ip to the state of the checkbox
+            txt_bin_ip.Visible = chk_bin_ip.Checked;
+            lbl_bin_ip.Visible = chk_bin_ip.Checked;
+        }
+
+
+        // This event is triggered when the state of chk_bin_mask checkbox changes
+        private void chk_bin_mask_CheckedChanged(object sender, EventArgs e)
+        {
+            // Set the visibility of txt_bin_mask and lbl_bin_mask to the state of the checkbox
+            txt_bin_mask.Visible = chk_bin_mask.Checked;
+            lbl_bin_mask.Visible = chk_bin_mask.Checked;
+        }
+
+        // This event is triggered when the state of chk_bin_netzid checkbox changes
+        private void chk_bin_netzid_CheckedChanged(object sender, EventArgs e)
+        {
+            // Set the visibility of txt_bin_netzid and lbl_bin_netzid to the state of the checkbox
+            txt_bin_netzid.Visible = chk_bin_netzid.Checked;
+            lbl_bin_netzid.Visible = chk_bin_netzid.Checked;
+        }
+
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -176,7 +201,14 @@ namespace NetzwerkRechner
             // Display the number of IP addresses in the txt_noip text box
             if (numberOfIPs > 0) 
             { txt_noip.Text = numberOfIPs.ToString(); }
-            
+            else if(cobo_mask.SelectedIndex == 30)
+            {
+                txt_noip.Text = "0";
+            }
+            else if (cobo_mask.SelectedIndex == 31)
+            {
+                txt_noip.Text = "1";
+            }
 
 
 
@@ -237,6 +269,55 @@ namespace NetzwerkRechner
             txt_hostmax.Text = lastValidAddr.ToString();
 
 
+            // Split the IP address into octets
+            string binaryIP = "";
+
+            // Convert each octet of the IP address to binary
+            foreach (string part in ipParts)
+            {
+                int partInt = Int32.Parse(part);
+                binaryIP += Convert.ToString(partInt, 2).PadLeft(8, '0') + ".";
+            }
+
+            binaryIP = binaryIP.TrimEnd('.');
+            txt_bin_ip.Text = binaryIP; // Store the binary IP
+
+            // Split the subnet mask into octets
+            string[] maskParts = txt_mask.Text.Split('.');
+            string binaryMask = "";
+
+            // Convert each octet of the subnet mask to binary
+            foreach (string part in maskParts)
+            {
+                int partInt = Int32.Parse(part);
+                binaryMask += Convert.ToString(partInt, 2).PadLeft(8, '0') + ".";
+            }
+
+            binaryMask = binaryMask.TrimEnd('.');
+            txt_bin_mask.Text = binaryMask; // Store the binary subnet mask
+
+            // Split the network ID into octets
+            string[] netidParts = txt_netzid.Text.Split('.');
+            string binaryNetid = "";
+
+            // Convert each octet of the network ID to binary
+            foreach (string part in netidParts)
+            {
+                int partInt = Int32.Parse(part);
+                binaryNetid += Convert.ToString(partInt, 2).PadLeft(8, '0') + ".";
+            }
+
+            binaryNetid = binaryNetid.TrimEnd('.');
+            txt_bin_netzid.Text = binaryNetid; // Store the binary network ID
+
+
+
+
+
+
+
+
+
 
         }
 
@@ -263,7 +344,7 @@ namespace NetzwerkRechner
         private void showHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Define a message box to provide help information
-            string message = "For help, contact me via Discord: bitflux_\nID: (266266567157874700) ";
+            string message = "For help, contact me via Discord: bitflux_\nID: (266266567157874700)\nVersion - 1.0.1 09.11.2023 ";
             string title = "Help";
             MessageBoxButtons buttons = MessageBoxButtons.OK;
 
@@ -326,6 +407,9 @@ namespace NetzwerkRechner
                 new MyObject { Label = "HostMax", Value = txt_hostmax.Text },
                 new MyObject { Label = "Occupied bits", Value = cobo_mask.Text},
                 new MyObject { Label = "IP", Value = txt_ip1.Text + "." + txt_ip2.Text + "." + txt_ip3.Text + "." + txt_ip4.Text },
+                new MyObject { Label = "IP Address Binary", Value = txt_bin_ip.Text},
+                new MyObject { Label = "Netmask Binary", Value = txt_bin_mask.Text},
+                new MyObject { Label = "Netzid Binary", Value = txt_bin_netzid.Text},
              };
 
             // Create a new save file dialog
@@ -426,10 +510,63 @@ namespace NetzwerkRechner
                                 txt_ip4.Text = ipParts[3];
                             }
                         }
+                        else if (line.StartsWith("IP Address Binary:"))
+                        {
+                            txt_bin_ip.Text = line.Substring("IP Address Binary:".Length).Trim();
+                        }
+                        else if (line.StartsWith("Netmask Binary:"))
+                        {
+                            txt_bin_mask.Text = line.Substring("Netmask Binary:".Length).Trim();
+                        }
+                        else if (line.StartsWith("Netzid Binary:"))
+                        {
+                            txt_bin_netzid.Text = line.Substring("Netzid Binary:".Length).Trim();
+                        }
                     }
                 }
             }
         }
+
+        
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            SaveData();
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            string[] txtfields = {
+        "txt_ip1",
+        "txt_ip2",
+        "txt_ip3",
+        "txt_ip4",
+        "txt_mask",
+        "txt_noip",
+        "txt_netzid",
+        "txt_bc",
+        "txt_hostmin",
+        "txt_hostmax",
+        "txt_bin_ip",
+        "txt_bin_mask",
+        "txt_bin_netzid"
+                         };
+
+            foreach (string field in txtfields)
+            {
+                Control[] controls = this.Controls.Find(field, true);
+                if (controls.Length > 0)
+                {
+                    TextBox textBox = controls[0] as TextBox;
+                    if (textBox != null)
+                    {
+                        textBox.Text = String.Empty;
+                    }
+                }
+            }
+            cobo_mask.SelectedIndex = -1;
+        }
+
+        
     }
 }
 
